@@ -1,0 +1,38 @@
+<div *ngIf="domainInfo">
+  <mat-card class="domain-section">
+    <h2>{{ domainInfo?.domainName }}</h2>
+    <p><strong>Created On:</strong> {{ domainInfo?.createdDate | date }}</p>
+    <p><strong>Last Updated:</strong> {{ domainInfo?.updatedDate | date }}</p>
+    <p><strong>Expires On:</strong> {{ domainInfo?.expiresDate | date }}</p>
+    <p><strong>Registrar:</strong> MarkMonitor, Inc.</p>
+    <div>
+      <strong>Status:</strong>
+      <ul>
+        <li *ngFor="let status of domainInfo?.status?.split(' ')">
+          {{ status }}
+        </li>
+      </ul>
+    </div>
+  </mat-card>
+
+  <mat-card class="contact-section">
+    <h3>Registrant Contact</h3>
+    <p>{{ domainInfo?.registrant?.name }}</p>
+    <p>{{ domainInfo?.registrant?.organization }}</p>
+    <p>
+      {{ domainInfo?.registrant?.street1 }}, {{ domainInfo?.registrant?.city }},
+      {{ domainInfo?.registrant?.state }}
+      {{ domainInfo?.registrant?.postalCode }},
+      {{ domainInfo?.registrant?.country }}
+    </p>
+    <p><strong>Email:</strong> {{ domainInfo?.registrant?.email }}</p>
+    <p><strong>Phone:</strong> {{ domainInfo?.registrant?.telephone }}</p>
+  </mat-card>
+
+  <mat-card class="nameserver-section">
+    <h3>Name Servers</h3>
+    <ul>
+      <li *ngFor="let ns of domainInfo?.nameServers?.hostNames">{{ ns }}</li>
+    </ul>
+  </mat-card>
+</div>

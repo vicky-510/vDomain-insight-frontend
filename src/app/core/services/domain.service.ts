@@ -12,7 +12,7 @@ export class DomainService {
   constructor(private http: HttpClient) { }
 
   getDomainDetails(domain: string): Observable<any> {
-    return this.http.get<any>(`${this.BASE_URL}?searchedDomain=${domain}`);
+    return this.http.get<any>(`${this.BASE_URL}/vwaran/v2/domain?searchedDomain=${domain}`);
   }
 
   
