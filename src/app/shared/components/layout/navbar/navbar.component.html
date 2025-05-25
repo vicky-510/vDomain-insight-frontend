@@ -1,0 +1,12 @@
+<mat-toolbar color="primary" class="toolbar" [class.dark-theme]="isDarkMode">
+  <span class="logo" routerLink="/">Domain Insight</span>
+  <span class="spacer"></span>
+  <nav class="nav-links">
+    <a mat-button routerLink="/about">About</a>
+    <a mat-button routerLink="/privacy">Privacy</a>
+    <a mat-button routerLink="/contact">Contact</a>
+    <button mat-icon-button (click)="toggleDarkMode()">
+      <mat-icon>{{ isDarkMode ? 'light_mode' : 'dark_mode' }}</mat-icon>
+    </button>
+  </nav>
+</mat-toolbar>
