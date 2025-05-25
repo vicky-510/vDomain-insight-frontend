@@ -1,3 +1,5 @@
-<h1>Domain Insight</h1>
-<app-search-form (domainSearch)="handleSearch($event)"></app-search-form>
-<app-domain-details [domainInfo]="domainData"></app-domain-details>
+<app-search-form (domainSearch)="handleSearch($event)" [loading]="isLoading"></app-search-form>
+<div *ngIf="isLoading" class="loader-container">
+  <img [src]="loaderSrc" alt="Loading..." class="spinner-img" />
+</div>
+<app-domain-card *ngIf="!isLoading && domainData" [domainInfo]="domainData"></app-domain-card>

@@ -1,0 +1,59 @@
+  <!-- sidenav -->
+  <mat-sidenav-container class="sidenav-container" [hasBackdrop]="false">
+    <!-- [hasBackdrop]="isMobile" -->
+    <mat-sidenav
+      fixedInViewport="true"
+      #drawer
+      mode="over"
+      [(opened)]="drawerOpened"
+      class="mobile-drawer"
+    >
+      <div class="drawer-header">
+        <button mat-icon-button (click)="toggleDarkMode()">
+          <mat-icon>{{ isDarkMode ? "light_mode" : "dark_mode" }}</mat-icon>
+        </button>
+        <button mat-icon-button (click)="closeDrawer()">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+
+      <mat-nav-list>
+        <a mat-list-item (click)="closeDrawer()">About</a>
+        <a mat-list-item (click)="closeDrawer()">Privacy</a>
+        <a mat-list-item (click)="closeDrawer()">Contact</a>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <!-- topnav  -->
+    <mat-toolbar class="main-toolbar" color="transparent" role="navigation">
+      <div class="container">
+        <span class="brand" routerLink="/">Domain Insight</span>
+        <span class="spacer"></span>
+
+        <!-- nav links for website -->
+        <ng-container *ngIf="!isMobile">
+          <nav class="links">
+            <a mat-button routerLink="/about">About</a>
+            <a mat-button routerLink="/privacy">Privacy</a>
+            <a mat-button routerLink="/contact">Contact</a>
+            <button
+              mat-icon-button
+              (click)="toggleDarkMode()"
+              aria-label="Toggle theme"
+            >
+              <mat-icon>{{ isDarkMode ? "light_mode" : "dark_mode" }}</mat-icon>
+            </button>
+          </nav>
+        </ng-container>
+
+        <!-- Hamburger icon for mobile -->
+        <ng-container *ngIf="isMobile" >
+          <button mat-icon-button (click)="toggleDrawer()">
+            <mat-icon>menu</mat-icon>
+          </button>
+        </ng-container>
+      </div>
+    </mat-toolbar>
+
+    <ng-content></ng-content>
+  </mat-sidenav-container>

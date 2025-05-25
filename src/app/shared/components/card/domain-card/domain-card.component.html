@@ -1,0 +1,14 @@
+<div class="domain-details-container" *ngIf="domainDetails && domainDetails.length > 0">
+  <mat-card class="domain-card" *ngFor="let card of domainDetails">
+    <mat-card-header>
+      <div mat-card-avatar class="card-icon">
+        <mat-icon>{{ card.icon }}</mat-icon>
+      </div>
+      <mat-card-title>{{ card.title }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p class="card-value">{{ card.value }}</p>
+    </mat-card-content>
+  </mat-card>
+</div>
+

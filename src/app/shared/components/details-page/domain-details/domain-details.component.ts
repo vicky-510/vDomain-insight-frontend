@@ -7,7 +7,8 @@ import { MatCardModule } from '@angular/material/card'
   standalone: true,
   imports: [CommonModule, MatCardModule],
   templateUrl: './domain-details.component.html',
-  styleUrl: './domain-details.component.scss'
+  styleUrl: './domain-details.component.scss',
+  
 })
 export class DomainDetailsComponent {
   @Input() domainInfo: any;
