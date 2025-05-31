@@ -1,14 +1,40 @@
-<div class="domain-details-container" *ngIf="domainDetails && domainDetails.length > 0">
-  <mat-card class="domain-card" *ngFor="let card of domainDetails">
-    <mat-card-header>
-      <div mat-card-avatar class="card-icon">
-        <mat-icon>{{ card.icon }}</mat-icon>
+<ng-container *ngIf="isLoading">
+  <div class="domain-details-container">
+    <div class="skeleton-card" *ngFor="let s of skeletonArray">
+      <div class="skeleton-header">
+        <div class="skeleton-avatar"></div>
+        <div class="skeleton-title"></div>
       </div>
-      <mat-card-title>{{ card.title }}</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <p class="card-value">{{ card.value }}</p>
-    </mat-card-content>
-  </mat-card>
-</div>
+      <div class="skeleton-content">
+        <div class="skeleton-line long"></div>
+        <div class="skeleton-line medium"></div>
+        <div class="skeleton-line short"></div>
+      </div>
+    </div>
+  </div>
+</ng-container>
 
+
+<ng-container *ngIf="!isLoading">
+  <div
+    class="domain-details-container"
+    *ngIf="domainDetails && domainDetails.length > 0"
+  >
+    <mat-card class="domain-card" *ngFor="let card of domainDetails">
+      <mat-card-header>
+        <div mat-card-avatar class="card-icon">
+          <mat-icon>{{ card.icon }}</mat-icon>
+        </div>
+        <mat-card-title>{{ card.title }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p class="card-value">{{ card.value }}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="toggle-button-container" *ngIf="domainDetails.length >= 6">
+      <button mat-button (click)="toggleView()" class="domain-view-more">
+        {{ showAll ? "View Less" : "View More" }}
+      </button>
+    </div>
+</ng-container>

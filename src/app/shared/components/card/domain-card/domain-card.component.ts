@@ -1,4 +1,4 @@
-import { Component, Input, SimpleChange, SimpleChanges } from '@angular/core';
+import { Component, Input, SimpleChange, SimpleChanges, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
@@ -11,13 +11,36 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrl: './domain-card.component.scss'
 })
 export class DomainCardComponent {
-       @Input() domainInfo: any;
+    @Input() domainInfo: any;
     domainDetails: any[] = [];
+    domainList: any[] = [];
+    skeletonArray = Array(6);
+    isLoading: boolean = true;
+    showAll: boolean = false;
+    initialLimit: number = 6;
+
+    constructor(private cdr: ChangeDetectorRef){}
 
     ngOnChanges(changes: SimpleChanges): void { // Ensure ngOnChanges takes SimpleChanges
       if (changes['domainInfo'] && this.domainInfo) {
-        this.domainDetails = this.mapDomainInfoToCards(changes['domainInfo'].currentValue);
+        this.isLoading = true;
+        setTimeout(()=> {
+          this.domainList = this.mapDomainInfoToCards(changes['domainInfo'].currentValue);
+          this.domainDetails = this.showAll 
+             ? this.domainList 
+             : this.domainList.slice(0, this.initialLimit);
+
+          this.isLoading = false
+        }, 5000);
       }
+    }
+
+    toggleView(){
+      this.showAll = !this.showAll;
+      this.domainDetails = this.showAll 
+         ? this.domainList 
+         : this.domainList.slice(0, this.initialLimit);
+      this.cdr.detectChanges();
     }
 
     // Helper to format dates
@@ -132,6 +155,9 @@ export class DomainCardComponent {
 
         return details;
     }
+
+
+ 
 
 
 

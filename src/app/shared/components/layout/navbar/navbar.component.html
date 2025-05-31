@@ -18,9 +18,10 @@
       </div>
 
       <mat-nav-list>
-        <a mat-list-item (click)="closeDrawer()">About</a>
-        <a mat-list-item (click)="closeDrawer()">Privacy</a>
-        <a mat-list-item (click)="closeDrawer()">Contact</a>
+        <a mat-list-item  (click)="navigateLink('/')">Home</a>
+        <a mat-list-item  (click)="navigateLink('/about')">About</a>
+        <a mat-list-item  (click)="navigateLink('/privacy')">Privacy</a>
+        <a mat-list-item  (click)="navigateLink('/contact')">Contact</a>
       </mat-nav-list>
     </mat-sidenav>
 

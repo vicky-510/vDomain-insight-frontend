@@ -5,6 +5,7 @@ import { DomainDetailsComponent } from '../../shared/components/details-page/dom
 import { HttpClientModule } from '@angular/common/http';
 import { DomainService } from '../../core/services/domain.service';
 import { DomainCardComponent } from '../../shared/components/card/domain-card/domain-card.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-domain-home',
@@ -14,6 +15,7 @@ import { DomainCardComponent } from '../../shared/components/card/domain-card/do
     HttpClientModule,
     SearchFormComponent,
     DomainCardComponent,
+    MatIconModule
   ],
   templateUrl: './domain-home.component.html',
   styleUrl: './domain-home.component.scss',
@@ -23,6 +25,7 @@ export class DomainHomeComponent {
   domainData: any;
   isLoading = false;
   loaderSrc = '';
+  errorMessage: string = '';
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
@@ -32,15 +35,18 @@ export class DomainHomeComponent {
   ngOnInit(): void {
     this.setLoaderBasedOnTheme();
 
-    // watch for theme toggle
-    const observer = new MutationObserver(() => {
-      this.setLoaderBasedOnTheme();
-    });
+   if (typeof window !== 'undefined' && typeof MutationObserver !== 'undefined') {
+      const observer = new MutationObserver(() => {
+        this.setLoaderBasedOnTheme();
+      });
 
-    observer.observe(this.document.body, {
-      attributes: true,
-      attributeFilter: ['class'],
-    });
+      observer.observe(this.document.body, {
+        attributes: true,
+        attributeFilter: ['class'],
+      });
+    } else {
+      console.warn('MutationObserver is not available in this environment.');
+    }
   }
 
   setLoaderBasedOnTheme(): void {
@@ -53,13 +59,21 @@ export class DomainHomeComponent {
   }
 
   handleSearch(domain: string) {
+    this.errorMessage = '';
     this.isLoading = true;
 
     if (domain?.trim()) {
       this.api.getDomainDetails(domain).subscribe({
         next: (data: any) => {
           const whois = data?.vwaran_API?.WhoisRecord;
+          const error = data?.vwaran_API?.ErrorMessage;
           this.isLoading = false;
+
+          if(error){
+            this.errorMessage = error.msg || 'Something went wrong.'
+            this.domainData = null;
+            return;
+          }
 
           if (whois) {
             const registry = whois.registryData;
@@ -176,15 +190,33 @@ export class DomainHomeComponent {
             };
           } else {
             this.domainData = null;
+            this.errorMessage = 'No data available for the domain.';
+
           }
         },
         error: (err: any) => {
           console.error('Error fetching domain details:', err);
           this.domainData = null;
+          this.isLoading = false;
+
+          console.log('kndsndfdf==>', err);
+          console.log('sjsdjgskjgsf==>', err?.error?.message);
+          console.log('dggdgsg==>', err?.status);
+
+
+            if (err?.status === 429) {
+              this.errorMessage = 'Too many requests. Please try again after 1 minute.';
+            } else if (err?.error?.message) {
+              this.errorMessage = err.error.message;
+            } else {
+              this.errorMessage = 'Something went wrong. Please try again.';
+            }
         },
       });
     } else {
       this.domainData = null;
+      this.isLoading = false;
+
     }
   }
 

@@ -1,0 +1,42 @@
+.about-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+.about-card {
+  max-width: 800px;
+  width: 100%;
+  padding: 2rem;
+  background-color: var(--bg-color);
+  color: inherit;
+  box-shadow: none;
+//   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border-radius: 12px;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  margin-top: 2rem;
+  font-size: 1.5rem;
+  color: #0078d4;
+
+}
+
+p {
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+ul {
+  padding-left: 1.5rem;
+  line-height: 1.6;
+}
+
+.divider {
+  margin: 2rem 0;
+}
