@@ -494,7 +494,6 @@ mat-nav-list a {
   max-width: 100%; 
   overflow-x: hidden;
   flex-wrap: wrap;
-  margin-bottom: 50px;
 
   .mat-icon-error{
       font-size: 45px;
@@ -574,7 +573,7 @@ mat-nav-list a {
   }
 
   .text-center{
-    padding-top: 2rem;
+    padding-top: 3rem;
     text-align: justify;
   }
    .footer-text {
@@ -608,8 +607,13 @@ mat-nav-list a {
   
 }
 
+  .text-center{
+    padding-top: 3rem;
+    text-align: justify;
+  }
+
   .error-box {
-    margin-bottom: 30px;
+    margin-bottom: 10px;
   }
 
   .sidenav-container{
