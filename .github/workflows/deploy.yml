@@ -10,4 +10,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Curl to Vercel Deploy Hook
-        run: curl -X POST ${{ secrets.VERCEL_DEPLOY_HOOK }}
+        run: curl -X POST ${{ secrets.NETLIFYL_DEPLOY_HOOK }}
