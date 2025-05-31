@@ -1,5 +1,5 @@
 # .github/workflows/deploy.yml
-name: Trigger Vercel Deploy Hook
+name: Trigger Netlify Deploy Hook
 
 on:
   push:
@@ -9,5 +9,5 @@ jobs:
   trigger-vercel:
     runs-on: ubuntu-latest
     steps:
-      - name: Curl to Vercel Deploy Hook
+      - name: Curl to Netlify Deploy Hook
         run: curl -X POST ${{ secrets.NETLIFYL_DEPLOY_HOOK }}
