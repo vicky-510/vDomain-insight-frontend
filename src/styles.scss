@@ -316,7 +316,7 @@ mat-nav-list a {
 
 .content {
   flex: 1; 
-  padding: 1rem;
+  padding: 0rem;
 }
 
 .footer-container{
@@ -596,6 +596,10 @@ mat-nav-list a {
     margin-bottom: 5px;
   }
 
+  .content {
+  flex: 0.5; 
+  padding: 0rem;
+ }
 }
 
 
@@ -624,6 +628,11 @@ mat-nav-list a {
   .sidenav-container{
     border-bottom: var(--border-bottom);
   }
+
+
+ .footer-container{
+  border-top: none;
+ }
 }
 
 @media (min-width: 769px) {
@@ -644,6 +653,15 @@ mat-nav-list a {
 }
 
 
+@media (min-width: 768px) and (max-width: 860px) {
+  .content {
+  flex: 0.75; 
+  padding: 0rem;
+ }
+  .footer-container{
+  border-top: none;
+ }
+}
 
 
 
