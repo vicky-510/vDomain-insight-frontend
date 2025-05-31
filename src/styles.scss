@@ -612,7 +612,7 @@ mat-nav-list a {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1.5rem;
-  padding: 1rem 0.5rem;
+  padding: 1.5rem 1rem;
   
 }
 
@@ -623,6 +623,8 @@ mat-nav-list a {
 
   .error-box {
     margin-bottom: 5px;
+    padding: 1.5rem 1rem;
+
   }
 
   .sidenav-container{
