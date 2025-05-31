@@ -1,0 +1,38 @@
+.contact-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 1rem;
+  min-height: 60vh;
+}
+
+.contact-box {
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+  background: var(--bg-color);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: none;
+//   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+h1 {
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+  color: inherit;
+}
+
+p {
+  font-size: 1.1rem;
+  color: inherit;
+}
+
+a {
+  color: #0078d4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}

@@ -1,5 +1,9 @@
 <app-search-form (domainSearch)="handleSearch($event)" [loading]="isLoading"></app-search-form>
-<div *ngIf="isLoading" class="loader-container">
+<div *ngIf="isLoading && !(errorMessage?.length ?? 0 > 0)" class="loader-container">
   <img [src]="loaderSrc" alt="Loading..." class="spinner-img" />
 </div>
 <app-domain-card *ngIf="!isLoading && domainData" [domainInfo]="domainData"></app-domain-card>
+<div class="error-box" *ngIf="errorMessage && (errorMessage?.length ?? 0 > 0) && !isLoading">
+  <mat-icon class="mat-icon-error">public</mat-icon>
+   <span class="mat-icon-txt">{{errorMessage}}</span> 
+</div>

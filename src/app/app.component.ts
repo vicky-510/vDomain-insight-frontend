@@ -1,17 +1,41 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {
+  RouterOutlet,
+  RouterModule,
+  Router,
+  NavigationStart,
+  NavigationEnd,
+  NavigationCancel,
+  NavigationError,
+  Event
+} from '@angular/router';
 import { NavbarComponent } from './shared/components/layout/navbar/navbar.component';
 
 import { CommonModule } from '@angular/common';
 import { FooterComponent } from "./shared/components/layout/footer/footer.component";
+import { DomainService } from './core/services/domain.service';
+import { HttpClientModule } from '@angular/common/http';
+
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule, NavbarComponent, FooterComponent],
+  imports: [HttpClientModule, RouterOutlet, RouterModule, CommonModule, NavbarComponent, FooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
+  providers: [DomainService]
 })
 export class AppComponent {
-  title = 'vDomain-insight-frontend';
+  title = 'Domain Insight';
+  loading$ = this.domainService.loading$;
+  isLoading = false;
+
+  constructor(private router: Router, private domainService: DomainService, private http: HttpClientModule) {}
+
+  ngOnInit() {
+    setTimeout(() => {
+      this.domainService.hide();
+    }, 1500);  
+  }
 }
