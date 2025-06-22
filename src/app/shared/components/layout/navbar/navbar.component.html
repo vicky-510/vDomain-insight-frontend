@@ -1,5 +1,5 @@
   <!-- sidenav -->
-  <mat-sidenav-container class="sidenav-container" [hasBackdrop]="false">
+  <mat-sidenav-container class="sidenav-container" [hasBackdrop]="isMobile">
     <!-- [hasBackdrop]="isMobile" -->
     <mat-sidenav
       fixedInViewport="true"
@@ -7,6 +7,9 @@
       mode="over"
       [(opened)]="drawerOpened"
       class="mobile-drawer"
+      [style.width]="'200px'"
+      (backdropClick)="closeDrawer()"
+
     >
       <div class="drawer-header">
         <button mat-icon-button (click)="toggleDarkMode()">

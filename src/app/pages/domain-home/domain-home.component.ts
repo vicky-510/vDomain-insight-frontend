@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { DomainService } from '../../core/services/domain.service';
 import { DomainCardComponent } from '../../shared/components/card/domain-card/domain-card.component';
 import { MatIconModule } from '@angular/material/icon';
+import { ChartInsightComponent } from "../../shared/components/layout/chart/chart-insight/chart-insight.component";
 
 @Component({
   selector: 'app-domain-home',
@@ -15,8 +16,9 @@ import { MatIconModule } from '@angular/material/icon';
     HttpClientModule,
     SearchFormComponent,
     DomainCardComponent,
-    MatIconModule
-  ],
+    MatIconModule,
+    ChartInsightComponent
+],
   templateUrl: './domain-home.component.html',
   styleUrl: './domain-home.component.scss',
   providers: [DomainService],

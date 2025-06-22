@@ -48,12 +48,17 @@ export class NavbarComponent {
   ) {
     const defaultTheme = this.isDarkMode ? 'dark-theme' : 'light-theme';
     this.renderer.addClass(document.body, defaultTheme);
-    this.isMobile = false;
+    if (isPlatformBrowser(this.platformId)) {
+      this.isMobile = window.innerWidth <= 768;
+    } else {
+      this.isMobile = false;
+    }
   }
 
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)) {
-      this.checkViewport();
+      this.isMobile = window.innerWidth <= 768;
+      //this.checkViewport();
     }
   }
 

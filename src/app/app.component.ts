@@ -34,6 +34,11 @@ export class AppComponent {
   constructor(private router: Router, private domainService: DomainService, private http: HttpClientModule) {}
 
   ngOnInit() {
+    const loader = document.getElementById('global-loader');
+    if (loader) {
+       loader.style.display = 'none';
+    }
+
     setTimeout(() => {
       this.domainService.hide();
     }, 1500);  

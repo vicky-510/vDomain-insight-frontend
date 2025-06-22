@@ -1,9 +1,18 @@
+
 <app-search-form (domainSearch)="handleSearch($event)" [loading]="isLoading"></app-search-form>
 <div *ngIf="isLoading && !(errorMessage?.length ?? 0 > 0)" class="loader-container">
   <img [src]="loaderSrc" alt="Loading..." class="spinner-img" />
+  <h3 class="loader-txt">Please wait while we process your request.</h3>
 </div>
+<!-- <app-chart-insight [domainInfo]="domainData"></app-chart-insight> -->
 <app-domain-card *ngIf="!isLoading && domainData" [domainInfo]="domainData"></app-domain-card>
+
+<div class="body-container" *ngIf="!isLoading && !(errorMessage?.length ?? 0 > 0) && !domainData">
+<img src="../../../assets/img/banner_search_insights_1.png" alt="Domain Banner" class="bg-image-insight" />
+</div>
+
 <div class="error-box" *ngIf="errorMessage && (errorMessage?.length ?? 0 > 0) && !isLoading">
   <mat-icon class="mat-icon-error">public</mat-icon>
    <span class="mat-icon-txt">{{errorMessage}}</span> 
 </div>
+

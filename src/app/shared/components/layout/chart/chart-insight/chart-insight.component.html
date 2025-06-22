@@ -1,0 +1,22 @@
+<div class="charts-wrapper">
+    <div class="chart-card">
+        <h3>Domain Timeline</h3>
+        <canvas baseChart [data]="timeLineChartData" [type]="'bar'"></canvas>
+    </div>
+     <div class="chart-card">
+        <h3>Registrar Stats</h3>
+        <canvas baseChart [data]="registrarChartData" [type]="'pie'"></canvas>
+    </div>
+     <div class="chart-card">
+        <h3>DNSSEC Status</h3>
+        <canvas baseChart [data]="dnsSecChartData" [type]="'doughnut'"></canvas>
+    </div>
+     <div class="chart-card">
+        <h3>WHOIS Update Timeline</h3>
+        <canvas baseChart [data]="whoisUpdateChartData" [type]="'line'"></canvas>
+    </div>
+     <!-- <div class="chart-card">
+        <h3>SEO Stats</h3>
+        <canvas baseChart [data]="seoStatsChartData" [type]="'bar'"></canvas>
+    </div> -->
+</div>
