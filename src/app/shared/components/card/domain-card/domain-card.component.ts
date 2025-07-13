@@ -14,10 +14,10 @@ export class DomainCardComponent {
     @Input() domainInfo: any;
     domainDetails: any[] = [];
     domainList: any[] = [];
-    skeletonArray = Array(6);
+    skeletonArray = Array(9);
     isLoading: boolean = true;
     showAll: boolean = false;
-    initialLimit: number = 6;
+    initialLimit: number = 9;
 
     constructor(private cdr: ChangeDetectorRef){}
 

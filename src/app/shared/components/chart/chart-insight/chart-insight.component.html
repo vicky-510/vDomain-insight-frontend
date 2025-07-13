@@ -1,0 +1,16 @@
+<div class="body-container">
+  <h1 class="chart-header-top">Visual Insights</h1>
+</div>
+
+<div class="charts-wrapper">
+  <div class="chart-card" *ngFor="let chart of isChartData">
+    <h3 class="chart-header">{{chart?.header}}</h3>
+    <canvas *ngIf="chart.data() && chart?.type" baseChart [data]="getChartData(chart)" [type]="chart?.type || 'bar'"></canvas>
+  </div>
+</div>
+
+<div class="toggle-chart-button-container" *ngIf="chartConfig.length >= initialLimit">
+    <button mat-button (click)="toggleView()" class="domain-view-more">
+      {{ showAll ? "View Less" : "View More" }}
+    </button>
+</div>

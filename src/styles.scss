@@ -131,7 +131,7 @@ mat-sidenav {
 .container {
   width: 100%;
   max-width: 1200px;
-  padding: 0 1rem;
+  padding: 0 1.5rem;
   margin: auto;
   display: flex;
   align-items: center;
@@ -142,7 +142,7 @@ mat-sidenav {
 .body-container {
   width: 100%;
   max-width: 1200px;
-  padding: 0 1rem;
+  padding: 0 1.5rem;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -151,6 +151,25 @@ mat-sidenav {
   text-align: center;
   box-sizing: border-box;
   overflow-x: hidden;
+
+
+  .chart-header-top {
+    font-weight: 500;
+    font-size: 1.4rem;
+    color: inherit;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2.5px solid #9bb0ff;
+  }
+
+  .card-header-top {
+    font-weight: 500;
+    font-size: 1.4rem;
+    color: inherit;
+    margin-bottom: 1.2rem;
+    margin-top: 2.5rem;
+    border-bottom: 2.5px solid #9bb0ff;
+  }
 }
 
 .brand {
@@ -219,7 +238,8 @@ mat-nav-list a {
   align-items: center;
   justify-content: center;
   gap: 0rem;
-  padding: 1rem 1rem;
+  padding: 1rem 1.5rem;
+  padding-bottom: 0.5rem !important;
   flex-wrap: nowrap;
 }
 
@@ -253,6 +273,9 @@ mat-nav-list a {
 .text-center {
   text-align: center;
   max-width: 700px;
+  letter-spacing: 2px;
+  word-spacing: 2px;
+  font-weight: 500;
   padding-top: 8rem;
 }
 
@@ -265,7 +288,7 @@ mat-nav-list a {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1.5rem;
-  padding: 2rem 1rem;
+  padding: 2rem 1.5rem;
 }
 
 .domain-card {
@@ -294,14 +317,14 @@ mat-nav-list a {
   }
 
   mat-card-title {
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: 1.2rem;
+    font-weight: 500;
     color: inherit;
   }
 
   .card-value {
-    font-size: 1.2rem;
-    font-weight: 700;
+    font-size: 1.1rem;
+    font-weight: 400;
     color: inherit;
     margin-top: 0.5rem;
     word-break: break-word;
@@ -347,7 +370,7 @@ mat-nav-list a {
   margin-bottom: 2rem;
 }
 
-.loader-txt{
+.loader-txt {
   display: block !important;
   padding-top: 1rem;
 }
@@ -365,7 +388,7 @@ mat-nav-list a {
 .footer-container {
   width: 100%;
   // max-width: 1200px;
-  padding: 0.25rem 1rem;
+  padding: 0.25rem 1.5rem;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -437,6 +460,13 @@ mat-nav-list a {
   margin-bottom: 4rem;
 }
 
+.toggle-chart-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
 .domain-view-more {
   color: white !important;
   background-color: rgb(145, 145, 252) !important;
@@ -456,7 +486,7 @@ mat-nav-list a {
 
 .skeleton-card {
   background-color: var(--bg-color);
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   border: 1.5px solid #9bb0ff;
   padding: 1rem;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
@@ -464,13 +494,14 @@ mat-nav-list a {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  max-width: 300px; 
+  max-width: 340px;
+  height: 200px;
   margin: 0.5rem;
 
   .skeleton-header {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 1.2rem;
 
     .skeleton-avatar {
       width: 48px;
@@ -621,47 +652,90 @@ mat-nav-list a {
   pointer-events: none;
 }
 
-.charts-wrapper{
+.charts-wrapper {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
   margin: 2rem 1rem;
   max-width: 1200px;
-  padding: 0rem 1rem;
+  padding: 0rem 1.5rem;
   margin: auto;
   box-sizing: border-box;
+  
 }
 
-.chart-card{
+.chart-card {
   background-color: var(--bg-color) !important;
-  padding: 1.5rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-  transition: transform 0.3s ease;
+  padding: 1rem;
   text-align: center;
-
+  border-radius: 0.5rem;
+  border: 1.5px solid #9bb0ff !important;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  animation: fadeIn 0.4s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center;
+  min-height: 300px; 
 
   &:hover {
     transform: translateY(-5px);
   }
 
-  h3{
+  h3 {
     margin-bottom: 1rem;
+    font-size: 1.2rem;
+  }
+
+  canvas {
+    max-width: 320px !important;
+    height: 180 !important;
+    margin: auto auto;
+    display: block;
+  }
+  .chart-header{
+    font-weight: 500;
     font-size: 1.2rem;
   }
 }
 
+.insight-fitler {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+
+  button {
+    padding: 6px 12px;
+    border: none;
+    background: #eee;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+
+    &.active {
+      background-color: rgb(145, 145, 252) !important;
+      color: white;
+    }
+  }
+}
+
+
 
 @media (max-width: 600px) {
   .container {
-    padding: 0rem 0rem !important;
+    padding: 0rem 0.5rem !important;
   }
+
   .brand {
     font-size: 1.4rem;
   }
+
   .search-container {
     flex-direction: column;
     align-items: stretch;
+    padding-bottom: 1rem !important;
   }
 
   .search-input {
@@ -670,6 +744,7 @@ mat-nav-list a {
 
   .text-center {
     padding-top: 2rem;
+    font-weight: 500;;
     text-align: justify;
   }
 
@@ -699,6 +774,20 @@ mat-nav-list a {
     margin-bottom: 20px;
     pointer-events: none;
   }
+  .chart-card {
+  min-height: 200px !important; 
+}
+.charts-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  margin: 2rem 1rem;
+  max-width: 1200px;
+  padding: 0rem 1.5rem;
+  margin: auto;
+  box-sizing: border-box;
+  
+}
 }
 
 
@@ -711,12 +800,13 @@ mat-nav-list a {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1.5rem;
-    padding: 1.5rem 1rem;
+    padding: 1.5rem 1.5rem;
 
   }
 
   .text-center {
     padding-top: 2rem;
+    font-weight: 500;;
     text-align: justify;
   }
 
@@ -744,7 +834,7 @@ mat-nav-list a {
 
   .card-value {
     font-size: 1.2rem;
-    font-weight: 700;
+    font-weight: 400;
     color: inherit;
     margin-top: 0.5rem;
     // word-break: break-all !important;

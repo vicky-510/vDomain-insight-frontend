@@ -6,7 +6,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { DomainService } from '../../core/services/domain.service';
 import { DomainCardComponent } from '../../shared/components/card/domain-card/domain-card.component';
 import { MatIconModule } from '@angular/material/icon';
-import { ChartInsightComponent } from "../../shared/components/layout/chart/chart-insight/chart-insight.component";
+import { ChartInsightComponent } from "../../shared/components/chart/chart-insight/chart-insight.component";
+import { InsightFilterComponent } from "../../shared/components/filter/insight-filter/insight-filter.component";
 
 @Component({
   selector: 'app-domain-home',
@@ -17,7 +18,8 @@ import { ChartInsightComponent } from "../../shared/components/layout/chart/char
     SearchFormComponent,
     DomainCardComponent,
     MatIconModule,
-    ChartInsightComponent
+    ChartInsightComponent,
+    InsightFilterComponent
 ],
   templateUrl: './domain-home.component.html',
   styleUrl: './domain-home.component.scss',
@@ -28,6 +30,7 @@ export class DomainHomeComponent {
   isLoading = false;
   loaderSrc = '';
   errorMessage: string = '';
+  public insightFilter: 'all' | 'statistical' | 'visual' = 'all';
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
@@ -58,6 +61,10 @@ export class DomainHomeComponent {
     } else {
       this.loaderSrc = '../../../assets/svg/svg_loader_search_light.svg';
     }
+  }
+
+  onFilterChange(filter: 'all' | 'statistical' | 'visual'){
+    this.insightFilter = filter;
   }
 
   handleSearch(domain: string) {

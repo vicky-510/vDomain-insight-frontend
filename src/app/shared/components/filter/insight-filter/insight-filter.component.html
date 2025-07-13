@@ -1,0 +1,5 @@
+<div class="insight-fitler mt-2">
+    <button [class.active]="selected === 'all'" (click)="onSelect('all')">All Insights</button>
+    <button  [class.active]="selected === 'statistical'" (click)="onSelect('statistical')">Statistical</button>
+    <button  [class.active]="selected === 'visual'" (click)="onSelect('visual')">Visual</button>
+</div>
