@@ -21,7 +21,7 @@ export class ContactComponent implements OnInit, OnDestroy  {
       if (this.countdown === 0) {
         clearInterval(this.intervalId);
         setTimeout(() => {
-        window.location.href = 'https://vwaran.tech/contact';
+        window.location.href = 'https://vwaran.com/contact';
       }, 500);       }
     }, 1000);
   }
